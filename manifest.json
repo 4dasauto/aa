@@ -1,0 +1,55 @@
+{
+  "background": {
+    "service_worker": "js/background.js" 
+  },
+  "content_scripts": [
+    
+    {
+      "all_frames": true,
+      "js": ["inject_start.js"],
+      "matches": [
+        "*://*.uyap.gov.tr/*"
+      ],
+      "run_at": "document_start"
+    },
+    {
+      "all_frames": true,
+      "js": ["inject_end.js"],
+      "matches": [
+        "*://*.uyap.gov.tr/*"
+      ],
+      "run_at": "document_end"
+    }
+  ],
+  "icons": {
+    "512": "icon/512.png",
+    "256": "icon/256.png",
+    "128": "icon/128.png",
+    "64": "icon/64.png",
+    "48": "icon/48.png",
+    "32": "icon/32.png",
+    "16": "icon/16.png"
+  },
+  "description": "Yatırım Tavsiyesi Değildir",
+  "web_accessible_resources": [{ 
+  "resources": [
+    "*.js","*.css","*.jpg","*.png"
+  ],
+  "matches": ["*://*.uyap.gov.tr/*"]
+}],
+   
+  "homepage_url": "http://www.bilqiler.com",
+  "manifest_version": 3,
+  "offline_enabled": true,
+  "name": "Yardımcı Asistan",
+  "short_name": "Yardımcı Asistan",
+  "permissions": [
+    "activeTab",  "scripting",  "tabs","storage", "declarativeNetRequest"
+  ],
+  
+  "content_security_policy": {
+    "content_security_policy": "script-src 'self' 'wasm-unsafe-inline' 'inline-speculation-rules' http://localhost:* https://localhost:* http://127.0.0.1:* https://127.0.0.1:*;object-src 'self' 'wasm-unsafe-inline' 'inline-speculation-rules' http://localhost:* https://localhost:* http://127.0.0.1:* https://127.0.0.1:*",
+    "sandbox": "sandbox allow-scripts allow-forms allow-popups allow-modals http://localhost:* http://127.0.0.1:*; script-src 'self' 'unsafe-inline' 'unsafe-eval' http://localhost:* http://127.0.0.1:* ; child-src 'self' http://localhost:* http://127.0.0.1:*;"
+  },
+  "version": "1.0.0.3" 
+}
